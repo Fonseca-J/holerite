@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Salário</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Holerite/2024</h2>
+        <form id="frmHolerite">
+            <fieldset id="texto">
+                <br>
+                <legend>Proventos</legend>
+                <div class="group">
+                    <label for="inputsalarioBase">Salário Base:</label>
+                    <input type="number" id="inputsalarioBase" placeholder="Ex: 3000" />
+                </div>
+
+                <div class="group">
+                    <label for="inputDiasTrabalhados">Dias Trabalhados:</label>
+                    <input type="number" id="inputDiasTrabalhados" placeholder="Ex: 30" />
+                </div>
+
+                <div class="group">
+                    <label for="inputExtra100">Horas Extras 100%:</label>
+                    <input type="number" id="inputExtra100" placeholder="Ex: 10">
+                </div>
+
+                <div class="group">
+                    <label for="inputExtra60">Horas Extras 60%:</label>
+                    <input type="number" id="inputExtra60" placeholder="Ex: 5">
+                </div>
+            </fieldset>
+
+            <br>
+            <fieldset id="texto">
+                <br>
+                <legend>Descontos</legend>
+                
+                <div class="group">
+                    <p>Adiantemento de Salário: R$ <span id="campoDescontoAdiantamento">0.00</span></p>
+                    <p>INSS: R$ <span id="campoDescontoInss">0.00</span></p>
+                    <p>IRRF: R$ <span id="campoDescontoIrrf">0.00</span></p>
+                    <p>Vale Transporte: R$ <span id="campoDescontoValeTransporte">0.00</span></p>
+                </div>
+            </fieldset>
+        </form>
+
+        <h3>Resultados</h3>
+        <p>Proventos: R$ <span id="total-proventos">0.00</span></p>
+        <p>Descontos: R$ <span id="total-descontos">0.00</span></p>
+        <p>Salário Líquido: R$ <span id="liquido-receber">0.00</span></p>
+
+        <footer>
+            <button type="button" onclick="calcular()">Calcular</button>
+            <p><strong>Líquido a Receber:</strong> R$ <span id="footer-liquido">0.00</span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
