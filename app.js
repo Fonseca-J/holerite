@@ -9,25 +9,25 @@
 
 
 
-const adia_pagto = 0.40 // 40% Adiantamento vale
 const vale_transporte = 0.06; // 6% desconto Vale Transporte
-const valor_hora_extra_100 = 50; // Exemplo de valor por hora extra 100%
-const valor_hora_extra_60 = 30; // Exemplo de valor por hora extra 60%
+const adia_pagto = 0.40; // 40% Adiantamento salarial
 
 function calcular() {
-    // Coletar valores dos inputs
-    let salarioBase = parseFloat(document.getElementById('inputsalarioBase').value) || 0;
-    let diasTrabalhados = parseFloat(document.getElementById('inputDiasTrabalhados').value) || 0;
-    let horasExtra100 = parseFloat(document.getElementById('inputExtra100').value) || 0;
-    let horasExtra60 = parseFloat(document.getElementById('inputExtra60').value) || 0;
+    let salarioCalculado = parseFloat(document.getElementById('inputsalarioBase').value) || 0;
+    let diasTrabalhados = parseInt(document.getElementById('inputDiasTrabalhados').value) || 0;
+    let extra100 = parseFloat(document.getElementById('inputExtra100').value) || 0;
+    let extra60 = parseFloat(document.getElementById('inputExtra60').value) || 0;
 
-    // Proventos: salário proporcional + horas extras
-    let salarioCalculado = (salarioBase / 30) * diasTrabalhados; // Proporcional ao número de dias trabalhados
-    let totalHorasExtras = (horasExtra100 * valor_hora_extra_100) + (horasExtra60 * valor_hora_extra_60);
-    let totalProventos = salarioCalculado + totalHorasExtras;
+    let salarioDia = salarioCalculado / 30; // Cálculo do salário diário
+    let totalProventos = salarioDia * diasTrabalhados + extra100 * (salarioDia / 220) * 2 + extra60 * (salarioDia / 220) * 1.6;
 
-    // Desconto Vale Transporte
-    let descontoValeTransporte = salarioCalculado * vale_transporte;
+    // Cálculo do desconto de Vale Transporte
+    let descontoValeTransporte = 0;
+    if (document.getElementById('valeTransporteCheck').checked) {
+        // Desconto proporcional ao salário e aos dias trabalhados
+        let salarioProporcional = salarioDia * diasTrabalhados; // Salário proporcional aos dias trabalhados
+        descontoValeTransporte = salarioProporcional * vale_transporte; // Cálculo do desconto
+    }
     document.getElementById('campoDescontoValeTransporte').innerHTML = descontoValeTransporte.toFixed(2);
 
     // Cálculo do INSS
