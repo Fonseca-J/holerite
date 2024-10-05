@@ -42,7 +42,7 @@ function calcular() {
         case (salarioCalculado <= 4000.04):
             descontoInss = salarioCalculado * 0.12;
             break;
-        case (salarioCalculado <= 7786.03):
+        case (salarioCalculado > 7786.03):
             descontoInss = salarioCalculado * 0.14;
             break;
         default:
